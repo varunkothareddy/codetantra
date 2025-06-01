@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            align-items: center;
+            height: 80vh;
+            justify-content: center;
+
+            background-size:0px 600px;
+        }
+        form{
+            width: 100vw;
+            height: 50vh;
+            margin-top: 0;
+            /* border: 1px solid black;
+            border-radius: 30px; */
+            text-align: center;
+            background-color: white;
+        }
+        input{
+            height:25px;
+            width:50vw;
+            font-size: 18px;
+            font-weight:0.1px;
+            border: 0.002px solid rgb(20, 174, 201);
+            border-radius: 14px;
+            background-color: rgb(250, 249, 249);
+            padding-left: 10px;
+            padding: 10px;
+        }
+        input::placeholder{
+            opacity: 0.4;
+        }
+        input:hover{
+            cursor: pointer;
+            background-color: white;
+            border: 2px solid rgb(12, 12, 12);
+            box-shadow: 4px 4px 8px rgb(23, 156, 201);
+        }
+        button{
+           height:30px;
+            width:30vw;
+            font-size: 16px;
+            border: 0.002px solid rgb(20, 174, 201);
+            border-radius: 14px;
+            background-color: rgb(126, 203, 248);
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: rgb(1, 82, 119);
+             box-shadow: 2px 2px 4px rgb(8, 8, 8);
+        }
+        p{
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        a{
+            font-size: 16px;
+            text-decoration: none;
+        }
+        a:hover{
+            color: rgb(253, 59, 25);
+            font-size: 18px;
+        }
+        img{
+            height: 15vh;
+            width: 50vw;
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <img src="https://s3.ap-south-1.amazonaws.com/ct-client-logos/logos/pace">
+    <input type="email" placeholder="EMAIL/USER ID" id="username" required><br>
+    <p> &nbsp;</p>
+    <input type="password" placeholder="PASSWORD" id="password" required><br>
+<p> &nbsp;</p>
+<!-- <button type="button" onclick="generateOTP()">Generate OTP</button>
+<p>&nbsp;</p>
+<input type="text" id="otpInput" placeholder="Enter OTP"><br>
+<p>&nbsp;</p>
+<button type="button" onclick="verifyOTP()">Verify OTP</button>
+<p>&nbsp;</p> -->
+    <button type="button" onclick="login()">LOGIN</button><br>
+    <p>&nbsp;</p>
+    <p><a href="" onclick="forgot()">Forgot your password?</a></p>
+    <p>&nbsp;</p>
+    <p><a href="">Not your institution?</a></p>
+    <p>&nbsp;</p>
+    <p><a href="admin-login.html">Admin Login?</a></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><a href="">&copy;2025 CopyRight CodeTantra.com &nbsp;&nbsp;&nbsp;Terms&Privacy.</a></p>
+</form>
+
+<script>
+    // let generatedOTP = null;
+
+    // function generateOTP() {
+    //     generatedOTP = Math.floor(100000 + Math.random() * 900000);
+    //     alert("OTP generated: " + generatedOTP);  // Show OTP (for demo)
+    // }
+
+    // function verifyOTP() {
+    //     const userOTP = document.getElementById('otpInput').value;
+
+    //     if (userOTP === String(generatedOTP)) {
+    //         alert("OTP verified successfully!");
+    //     } else {
+    //         alert("Incorrect OTP. Try again.");
+    //     }
+    // }
+
+
+ const allowedEmails = [];
+
+ for(let i=1;i<=9;i++){
+  allowedEmails.push(`23kq1a050${i}@pace.ac.in`);
+ }
+  //  67 to 99
+  for (let i = 10; i <= 99; i++) {
+    allowedEmails.push(`23kq1a05${i}@pace.ac.in`);
+  }
+  //  a0 to  d2
+  const suffixGroups = ['a', 'b', 'c','d','e','f','g','h','i','j'];
+  suffixGroups.forEach(letter => {
+    for (let i = 0; i <= 9; i++) {
+      allowedEmails.push(`23kq1a05${letter}${i}@pace.ac.in`);
+    }
+  });
+
+  for(let i=7;i<=9;i++){
+    allowedEmails.push(`24kq5a050${i}@pace.ac.in`);
+  }
+
+  for(let i=10;i<=18;i++){
+    allowedEmails.push(`24kq5a05${i}@pace.ac.in`);
+  }
+
+  const commonPassword = "Pace@123";
+
+  function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (allowedEmails.includes(username) && password === commonPassword) {
+      localStorage.setItem("userEmail", username);
+      window.location.href = "ct-home.html";
+    } else {
+      alert("Please enter your correct credentials!");
+    }
+  }
+    
+</script>
+</body>
+</html>
